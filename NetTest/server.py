@@ -30,7 +30,7 @@ def recv_data(conn):
 def send_data(conn):
     while True:
         data2send = str("Hola")
-        conn.sendall((data2send + "\n").enconde("utf-8"))
+        conn.sendall((data2send + "\n").encode("utf-8"))
 
 
 
