@@ -27,5 +27,5 @@ def send_data(conn):
     
 
 
-def close_client():
+def close_client(conn):
     conn.close()

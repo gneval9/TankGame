@@ -13,7 +13,7 @@ def start_server():
     conn, addr = server.accept()
     print("Conectado:", addr)
     
-    return connm, server
+    return conn, server
 
 
 def recv_data(conn):
@@ -34,6 +34,6 @@ def send_data(conn):
 
 
 
-def close_server():
+def close_server(conn, server):
     conn.close()
     server.close()
