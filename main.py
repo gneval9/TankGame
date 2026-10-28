@@ -37,7 +37,7 @@ player_speed = 5
 
 canon_deg = 0
 
-tank_coords = [0,0,1900]
+tank_coords = [-100,0,400]
 tank_orient = 90
 
 
@@ -78,27 +78,15 @@ while True:
     tank["position"] = [tank_coords[0] - player_coords[0], tank_coords[1] - player_coords[1], tank_coords[2] - player_coords[2]]
     
 
-    if tank["position"][0] > LOD_dist or tank["position"][2] > LOD_dist:
-        tank["original"] = fd3de.spawn(tank_model_LP)["original"]    
+    tank["original"] = fd3de.spawn(tank_model)["original"]    
 
-        tank["position"][1] -= height_offset
-        tank["position"][2] -= chasis_offset
- 
-        fd3de.scene_orbit_all("y", -player_orient, "tanks", player)
-        tank["rotation"][1] = -player_orient
+    tank["position"][1] -= height_offset
+    tank["position"][2] -= chasis_offset
 
 
-
-    else:
-        tank["original"] = fd3de.spawn(tank_model)["original"]    
-
-        tank["position"][1] -= height_offset
-        tank["position"][2] -= chasis_offset
-
-
-        # Calcular posición relativa (rotación)
-        fd3de.scene_orbit_all("y", -player_orient, "tanks", player)
-        tank["rotation"][1] = -player_orient + tank_orient
+    # Calcular posición relativa (rotación)
+    fd3de.scene_orbit_all("y", -player_orient, "tanks", player)
+    tank["rotation"][1] = -player_orient + tank_orient
 
 
 
