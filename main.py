@@ -63,10 +63,10 @@ while True:
 
 
 
-    if fd3de.key_input("w") and canon["rotation"][0] > -10:
+    if fd3de.key_input("s") and canon["rotation"][0] > -10:
         canon_deg -= 1
  
-    if fd3de.key_input("s") and canon["rotation"][0] < 0:
+    if fd3de.key_input("w") and canon["rotation"][0] < 0:
         canon_deg += 1
 
     

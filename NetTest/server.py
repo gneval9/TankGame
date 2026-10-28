@@ -1,16 +1,39 @@
 import socket
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(("0.0.0.0", 5000))
-server.listen()
+HOST = "0.0.0.0"
+PORT = 5000
 
-print("Esperando conexión...")
+def start_server():
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind((HOST,PORT))
+    server.listen()
 
-conn, addr = server.accept()
-print("Conectado:", addr)
+    print("Esperando conexión...")
 
-data = conn.recv(1024)
-print("Recibido:", data.decode())
+    conn, addr = server.accept()
+    print("Conectado:", addr)
+    
+    return connm, server
 
-conn.close()
-server.close()
+
+def recv_data(conn):
+    while True:
+        data = conn.recv(1024)
+
+        if not data:
+            break
+
+        return data.decode("utf-8")
+
+
+   
+def send_data(conn):
+    while True:
+        data2send = str("Hola")
+        conn.sendall((data2send + "\n").enconde("utf-8"))
+
+
+
+def close_server():
+    conn.close()
+    server.close()
